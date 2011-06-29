@@ -1,66 +1,67 @@
 # ROACH 2 CPLD Pin Constraints File
 
-NET "por_force_n"     LOC = 34;
-NET "ppc_trst_n"      LOC = 80;
-NET "sys_por_n"       LOC = 99;
-NET "sys_trst_n"      LOC = 81;
-NET "sys_wp_n"        LOC = 32;
+NET "por_force_n"     IOSTANDARD = LVCMOS33 | LOC = "34";
+NET "ppc_trst_n"      IOSTANDARD = LVCMOS33 | LOC = "80";
+NET "sys_por_n"       IOSTANDARD = LVCMOS33 | LOC = "99";
+NET "sys_trst_n"      IOSTANDARD = LVCMOS33 | LOC = "81";
+NET "sys_wp_n"        IOSTANDARD = LVCMOS33 | LOC = "32";
 
-NET "boot_cfg_dis_n"   LOC = 71;
-NET "boot_cfg<0>"     LOC = 74;
-NET "boot_cfg<1>"     LOC = 73;
-NET "boot_cfg<2>"     LOC = 72;
+NET "boot_cfg_dis_n"   IOSTANDARD = LVCMOS33 | LOC = "71";
+NET "boot_cfg<0>"     IOSTANDARD = LVCMOS33 | LOC = "74";
+NET "boot_cfg<1>"     IOSTANDARD = LVCMOS33 | LOC = "73";
+NET "boot_cfg<2>"     IOSTANDARD = LVCMOS33 | LOC = "72";
 
-NET "config_dip0"     LOC = 43;
-NET "config_dip1"     LOC = 42;
-NET "config_dip2"     LOC = 41;
-NET "config_dip3"     LOC = 40;
-NET "config_dip4"     LOC = 39;
-NET "config_dip5"     LOC = 37;
-NET "config_dip6"     LOC = 36;
-NET "config_dip7"     LOC = 35;
+NET "config_dip<0>"     IOSTANDARD = LVCMOS33 | LOC = "43";
+NET "config_dip<1>"     IOSTANDARD = LVCMOS33 | LOC = "42";
+NET "config_dip<2>"     IOSTANDARD = LVCMOS33 | LOC = "41";
+NET "config_dip<3>"     IOSTANDARD = LVCMOS33 | LOC = "40";
+NET "config_dip<4>"     IOSTANDARD = LVCMOS33 | LOC = "39";
+NET "config_dip<5>"     IOSTANDARD = LVCMOS33 | LOC = "37";
+NET "config_dip<6>"     IOSTANDARD = LVCMOS33 | LOC = "36";
+NET "config_dip<7>"     IOSTANDARD = LVCMOS33 | LOC = "35";
 
-NET "cpld_irq_n"       LOC = 90;
+NET "epb_perclk"      IOSTANDARD = LVCMOS33 | LOC = "22";
+NET "epb_pcs_n"       IOSTANDARD = LVCMOS33 | LOC = "97";
+NET "epb_poe_n"       IOSTANDARD = LVCMOS33 | LOC = "1";
+NET "epb_pwr_n"       IOSTANDARD = LVCMOS33 | LOC = "96";
+NET "epb_prdy"        IOSTANDARD = LVCMOS33 | LOC = "95";
+NET "epb_paddr<26>"   IOSTANDARD = LVCMOS33 | LOC = "8";
+NET "epb_paddr<27>"   IOSTANDARD = LVCMOS33 | LOC = "7";
+NET "epb_paddr<28>"   IOSTANDARD = LVCMOS33 | LOC = "6";
+NET "epb_paddr<29>"   IOSTANDARD = LVCMOS33 | LOC = "4";
+NET "epb_paddr<30>"   IOSTANDARD = LVCMOS33 | LOC = "3";
+NET "epb_paddr<31>"   IOSTANDARD = LVCMOS33 | LOC = "2";
+NET "epb_pdata<0>"    IOSTANDARD = LVCMOS33 | LOC = "16";
+NET "epb_pdata<1>"    IOSTANDARD = LVCMOS33 | LOC = "15";
+NET "epb_pdata<2>"    IOSTANDARD = LVCMOS33 | LOC = "14";
+NET "epb_pdata<3>"    IOSTANDARD = LVCMOS33 | LOC = "13";
+NET "epb_pdata<4>"    IOSTANDARD = LVCMOS33 | LOC = "12";
+NET "epb_pdata<5>"    IOSTANDARD = LVCMOS33 | LOC = "11";
+NET "epb_pdata<6>"    IOSTANDARD = LVCMOS33 | LOC = "10";
+NET "epb_pdata<7>"    IOSTANDARD = LVCMOS33 | LOC = "9";
 
-NET "epb_perclk"      LOC = 22;
-NET "epb_pcs_n"       LOC = 97;
-NET "epb_poe_n"       LOC = 1;
-NET "epb_pwr_n"       LOC = 96;
-NET "epb_prdy"        LOC = 95;
-NET "epb_paddr<26>"   LOC = 8;
-NET "epb_paddr<27>"   LOC = 7;
-NET "epb_paddr<28>"   LOC = 6;
-NET "epb_paddr<29>"   LOC = 4;
-NET "epb_paddr<30>"   LOC = 3;
-NET "epb_paddr<31>"   LOC = 2;
-NET "epb_pdata<0>"    LOC = 16;
-NET "epb_pdata<1>"    LOC = 15;
-NET "epb_pdata<2>"    LOC = 14;
-NET "epb_pdata<3>"    LOC = 13;
-NET "epb_pdata<4>"    LOC = 12;
-NET "epb_pdata<5>"    LOC = 11;
-NET "epb_pdata<6>"    LOC = 10;
-NET "epb_pdata<7>"    LOC = 9;
+NET "cpld_irq_n"       IOSTANDARD = LVCMOS33 | LOC = "90";
+NET "led_n"       IOSTANDARD = LVCMOS33 | LOC = "46";
 
-NET "mmc_cd_n"        LOC = 59;
-NET "mmc_clk"         LOC = 58;
-NET "mmc_cmd"         LOC = 61;
-NET "mmc_dat<0>"      LOC = 54;
-NET "mmc_dat<1>"      LOC = 53;
-NET "mmc_dat<2>"      LOC = 65;
-NET "mmc_dat<3>"      LOC = 64;
-NET "mmc_dmaack"      LOC = 93;
-NET "mmc_dmaeot"      LOC = 92;
-NET "mmc_dmareq"      LOC = 91;
-NET "mmc_pwron_n"     LOC = 50;
-NET "mmc_wp_n"        LOC = 52;
+NET "mmc_clk"         IOSTANDARD = LVCMOS33 | LOC = "58" | SLEW = "SLOW";
+NET "mmc_cmd"         IOSTANDARD = LVCMOS33 | LOC = "61" | PULLUP;
+NET "mmc_dat<0>"      IOSTANDARD = LVCMOS33 | LOC = "54" | PULLUP;
+NET "mmc_dat<1>"      IOSTANDARD = LVCMOS33 | LOC = "53" | PULLUP;
+NET "mmc_dat<2>"      IOSTANDARD = LVCMOS33 | LOC = "65" | PULLUP;
+NET "mmc_dat<3>"      IOSTANDARD = LVCMOS33 | LOC = "64" | PULLUP;
+NET "mmc_dmaack"      IOSTANDARD = LVCMOS33 | LOC = "93"; #| PULLUP;
+NET "mmc_dmaeot"      IOSTANDARD = LVCMOS33 | LOC = "92"; #| PULLUP;
+NET "mmc_dmareq"      IOSTANDARD = LVCMOS33 | LOC = "91"; #| PULLUP;
+NET "mmc_pwron_n"     IOSTANDARD = LVCMOS33 | LOC = "50"; #| PULLUP;
+NET "mmc_wp_n"        IOSTANDARD = LVCMOS33 | LOC = "52" | PULLUP;
+NET "mmc_cd_n"        IOSTANDARD = LVCMOS33 | LOC = "59" | PULLUP;
 
-NET "flash_busy_n"    LOC = 17;
+NET "flash_busy_n"    IOSTANDARD = LVCMOS33 | LOC = "17";
 
 # This is a NOPOP, use epb_perclk instead
-# NET "cpld_clk"        LOC = 23;
+# NET "cpld_clk"        IOSTANDARD = LVCMOS33 | LOC = "23";
 # This isn't needed since PPC440EPx JTAG is cracked circuit should be removed from rev 1 on
-# NET "nvm_cs_grab"     LOC = 94;
+# NET "nvm_cs_grab"     IOSTANDARD = LVCMOS33 | LOC = "94";
 # This was added in error should be deleted in rev 1 on
-# NET "sys_wp_n"         LOC = 85;
+# NET "sys_wp_n"         IOSTANDARD = LVCMOS33 | LOC = "85";
 
