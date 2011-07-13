@@ -27,6 +27,7 @@ bits: synth
 	   NETLIST="../synthesis/$(PROJECT).ngc" \
 	   NETLIST_DIRS="$(addprefix  ../,$(NETLIST_DIRS))"
 	@cp implementation/$(PROJECT).jed gen/$(PROJECT)_$(REV_MAJOR)_$(REV_MINOR)_$(REV_RCS).jed
+	@cp implementation/$(PROJECT).svf gen/$(PROJECT)_$(REV_MAJOR)_$(REV_MINOR)_$(REV_RCS).svf
 
 synth: build_parameters
 	@make -C synthesis netlist \

@@ -10,8 +10,6 @@ module toplevel(
      output         sys_wp_n,
      // Power-on reset force control
      output         por_force_n,
-     // PowerPC JTAG reset 
-     output         ppc_trst_n,
 
      // Disable boot configuration controls
      output         boot_cfg_dis_n,
@@ -58,8 +56,6 @@ module toplevel(
   /* system wide reset */
   wire sys_reset = !(sys_por_n);
 
-  assign ppc_trst_n = sys_trst_n && sys_por_n;
-
   assign por_force_n = 1'bz;
 
   /******************* Fixed Assignments **********************/
@@ -95,6 +91,15 @@ module toplevel(
     .I(epb_pdata), .O(epb_pdata_o)
   );
 
+  wire epb_prdy_o;
+  wire epb_prdy_oe;
+
+  /* Tri-state control for prdy bus */
+
+  OBUFE OBUFE_prdy(
+    .E(epb_prdy_oe), .I(epb_prdy_o), .O(epb_prdy)
+  );
+
   wire       wb_stb_o;
   wire       wb_we_o;
   wire       wb_sel_o;
@@ -115,8 +120,8 @@ module toplevel(
     .epb_data_i  (epb_pdata_o),
     .epb_data_o  (epb_pdata_i),
     .epb_data_oe (epb_pdata_oe),
-    .epb_rdy_o   (epb_prdy),
-    .epb_rdy_oe  (),
+    .epb_rdy_o   (epb_prdy_o),
+    .epb_rdy_oe  (epb_prdy_oe),
 
     .wb_cyc_o (),
     .wb_stb_o (wb_stb_o),

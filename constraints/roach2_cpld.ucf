@@ -1,3 +1,6 @@
+Net epb_perclk TNM_NET = epb_perclk;
+TIMESPEC TS_epb_perclk = PERIOD epb_perclk 84 MHz;
+
 # ROACH 2 CPLD Pin Constraints File
 
 NET "por_force_n"     IOSTANDARD = LVCMOS33 | LOC = "34";

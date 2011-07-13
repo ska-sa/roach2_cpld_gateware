@@ -1,4 +1,4 @@
-`define ENABLE_CRC16
+//`define ENABLE_CRC16
 module mmc_controller(
     input        wb_clk_i,
     input        wb_rst_i,
