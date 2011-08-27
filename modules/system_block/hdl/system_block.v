@@ -42,7 +42,7 @@ module system_block #(
 
   reg [7:0] wb_dat_o_reg;
   always @(*) begin
-    case (wb_adr_i)
+    case (wb_adr_i[2:0])
       REG_DIP: begin
         wb_dat_o_reg <= config_dip;
       end
@@ -76,10 +76,10 @@ module system_block #(
       irq_r <= irq_src | irq_r;
 
       if (wb_stb_i && wb_cyc_i && wb_we_i) begin
-        if (wb_adr_i == REG_IRQM) begin
+        if (wb_adr_i[2:0] == REG_IRQM) begin
           irq_m <= wb_dat_i[NUM_IRQ-1:0];
         end
-        if (wb_adr_i == REG_IRQR) begin
+        if (wb_adr_i[2:0] == REG_IRQR) begin
           irq_r <= wb_dat_i[NUM_IRQ-1:0];
         end
       end

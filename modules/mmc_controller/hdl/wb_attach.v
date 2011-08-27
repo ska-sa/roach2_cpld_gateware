@@ -1,3 +1,4 @@
+//`define CRC 
 module wb_attach(
     input         wb_clk_i,
     input         wb_rst_i,
@@ -68,7 +69,9 @@ module wb_attach(
 
   reg get_ready_en_reg;
 
+`ifdef CRC
   reg [1:0] crc_sel;
+`endif
 
 
 
@@ -128,6 +131,7 @@ module wb_attach(
       REG_CLK: begin
         wb_dat_reg <= {2'b0, dat_oe, cmd_oe, 1'b0, data_width, clk_width};
       end
+`ifdef CRC
       REG_CRC_DAT1: begin
         case (crc_sel)
           0: begin
@@ -160,6 +164,7 @@ module wb_attach(
           end
         endcase
       end
+`endif
       default: begin
         wb_dat_reg <= 8'b0;
       end
@@ -200,9 +205,11 @@ module wb_attach(
             data_width_reg <= wb_dat_i[2];
             clk_width_reg  <= wb_dat_i[1:0];
           end
+`ifdef CRC
           REG_CRC_CMD: begin
             crc_sel <= wb_dat_i[5:4];
           end
+`endif
           default: begin
           end
         endcase
@@ -217,7 +224,6 @@ module wb_attach(
 
   assign mem_adv_mode = mem_adv_mode_reg;
   assign man_adv_en = wb_trans && wb_we_i && wb_adr_i == REG_ADV;
-  assign crc_rst    = wb_trans && wb_we_i && wb_adr_i == REG_CRC_DAT1;
 
   assign dat_oe     = dat_oe_reg;
   assign cmd_oe     = cmd_oe_reg;
@@ -226,4 +232,7 @@ module wb_attach(
   assign data_width = data_width_reg;
   assign clk_width  = clk_width_reg;
 
+`ifdef CRC
+  assign crc_rst    = wb_trans && wb_we_i && wb_adr_i == REG_CRC_DAT1;
+`endif
 endmodule

@@ -67,7 +67,7 @@ module toplevel(
                                                   3'b101;  //boot option G (eeprom)
   assign sys_wp_n    = 1'b1;
 
-  assign mmc_pwron_n = 1'b1; /* TODO: add to controller memory */
+  assign mmc_pwron_n = 1'b0; /* TODO: add to controller memory */
   assign mmc_dmaack = 1'b0; /* TODO: make mmc DMA ready */
   assign mmc_dmaeot = 1'b0;
   assign mmc_dmareq = 1'b0;
@@ -154,7 +154,7 @@ module toplevel(
 
   /*********************** Revision Control Info *************************/
 
-  localparam NUM_IRQ = 4;
+  localparam NUM_IRQ = 2;
 
   wire [NUM_IRQ - 1:0] irq_src;
 
@@ -174,7 +174,7 @@ module toplevel(
     .wb_dat_o   (wb_dat_i_1),
     .wb_ack_o   (wb_ack_i_1),
     .config_dip (config_dip),
-    .status     ({3'b0, mmc_wp_n, 3'b0, mmc_cd_n}),
+    .status     ({2'b0, mmc_wp_n, mmc_cd_n, 4'b0}),
     .irq_src    (irq_src),
     .irq        (ppc_irq)
   );
@@ -224,8 +224,8 @@ module toplevel(
     .mmc_cdetect  (mmc_cd_n),
     
     .irq_cdetect  (irq_src[0]),
-    .irq_got_cmd  (irq_src[2]),
-    .irq_got_dat  (irq_src[3]),
+    .irq_got_cmd  (),
+    .irq_got_dat  (),
     .irq_got_busy (irq_src[1])
   );
 
