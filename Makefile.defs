@@ -6,7 +6,7 @@
 
 PROJECT=roach2_cpld
 REV_MAJOR=2
-REV_MINOR=1
+REV_MINOR=2
 REV_RCS:=0
 
 # Pin Constraints
@@ -36,3 +36,60 @@ PARTNUM=xc2c256-7-VQ100
 VINC=include
 
 GEN_DIR=gen
+
+#################### Build Parameters Implementation ###########################
+#
+#xilinx apps
+
+ISE_VER=
+
+NGDBUILD=ngdbuild$(ISE_VER)
+CPLDFIT=cpldfit$(ISE_VER)
+HPREP6=hprep6$(ISE_VER)
+TAEGINE=taengine$(ISE_VER)
+
+######### Command Flags ###########
+NGDBUILD_FLAGS=-aul
+CPLDFIT_FLAGS=
+HPREP6_FLAGS=
+#TAENGINE_FLAGS=-detail
+TAENGINE_FLAGS=
+
+#################### Build Parameters Synthesis ###########################
+#
+#xilinx apps
+
+ISE_VER=
+
+XST=xst$(ISE_VER)
+
+#XST script commands
+XST_ARGS=run, -ifn $(PROJECT).prj,\
+              -ifmt mixed,\
+              -ofn $(PROJECT),\
+              -ofmt NGC,\
+              -top  $(TOPLEVEL_MODULE),\
+              -p $(PARTNUM),\
+              -opt_mode Area,\
+              -opt_level 2,\
+              -iuc NO,\
+              -keep_hierarchy NO,\
+              -rtlview Yes,\
+              -hierarchy_separator /,\
+              -bus_delimiter <>,\
+              -case maintain,\
+              -verilog2001 YES,\
+              -fsm_extract YES -fsm_encoding Auto,\
+              -safe_implementation No,\
+              -mux_extract YES,\
+              -resource_sharing YES,\
+              -iobuf YES,\
+              -equivalent_register_removal YES,\
+              -vlgincdir $(VINC)
+
+
+XST_SCRIPT=$(PROJECT).xst
+
+XST_PROJ=$(PROJECT).prj
+
+LANGUAGE=usenglish

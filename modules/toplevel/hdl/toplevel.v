@@ -63,8 +63,9 @@ module toplevel(
   assign led_n = 1'b0;
   
   assign boot_cfg_dis_n = 1'b1; // Always enabled
-  assign boot_cfg       = config_dip[0] == 1'b1 ? 3'b010 : //boot option C (default)
-                                                  3'b101;  //boot option G (eeprom)
+  assign boot_cfg       = config_dip[1:0] == 2'b11 ? 3'b010 : //boot option C (default)
+                                             2'b01 ? 3'b001 : //boot option B (Slowest)
+                                                     3'b101;  //boot option G (eeprom)
   assign sys_wp_n    = 1'b1;
 
   assign mmc_pwron_n = 1'b0; /* TODO: add to controller memory */
